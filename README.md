@@ -1,7 +1,6 @@
-/* =========================
-   GENEL
-   ========================= */
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 .search-th{
   text-align:center;
@@ -10,14 +9,11 @@
 
 .search-input{
   margin: 0 auto;
-  width: clamp(7rem, 10vw, 10rem); /* 120px yerine */
-  height: 1.6rem;                  /* 24px yerine */
+  width: clamp(7rem, 10vw, 10rem);
+  height: 1.6rem;
   text-align:center;
 }
 
-/* =========================
-   INFO POPUP
-   ========================= */
 .info-box {
   position: relative;
   display: inline-block;
@@ -30,152 +26,99 @@
   display:none;
   background:white;
   border:1px solid #ccc;
-
-  width: min(26rem, 90vw);   /* 400px yerine */
-  height: auto;              /* 238px yerine */
-  max-height: 14rem;         /* taşarsa scroll */
+  width: min(26rem, 90vw);
+  max-height: 14rem;
   overflow: auto;
-
   padding:0;
   line-height: 1;
   z-index: 1000;
-  vertical-align: middle;
 }
 
 .info-popup table{
   border-collapse:collapse;
-  border-spacing:0;
   width:100%;
   table-layout: fixed;
-  margin:0;
 }
 
-/* =========================
-   BOŞ KAYIT ALANLARI
-   ========================= */
 .no-records,
 .no-records-efficiency{
-  min-height: 12.5rem;       /* 200/207px yerine */
-  vertical-align: middle;
-  font-size: 1.2rem;
+  min-height: 8rem;
+  font-size: 1.1rem;
   color: #6c757d;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-/* =========================
-   TEXT TRUNCATE
-   ========================= */
-.truncate{
-  max-width: 12.5rem;        /* 200px yerine */
+.truncate,
+.truncate-cell{
+  max-width: 12.5rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.truncate-cell{
-  max-width: 12.5rem;
-  white-space: nowrap;       /* sende nokta yanlış yazılmış: white-space.nowrap */
-  overflow:hidden;
-  text-overflow: ellipsis;
-  display: inline-block;
+  display:inline-block;
   vertical-align: middle;
 }
 
-/* =========================
-   TABLO SCROLL + STICKY HEADER
-   ========================= */
-.emir{
-  display:block;
-  max-height: none;          /* 250px kilidini aç */
-  overflow-y:auto;
-  min-height: 0;
-}
-
-thead th {
-  position: sticky;
-  top:0;
-  z-index:1;
-}
-
-/* =========================
-   PAGE LAYOUT (EN KRİTİK)
-   ========================= */
 .container {
-  padding: 1.25rem;          /* 20px -> rem */
+  padding: 0.75rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;              /* 20px -> rem */
+  gap: 0.5rem;
   min-height: 0;
 }
 
-/* header sabit olmasın; içerik büyürse genişleyebilsin */
 .header-box {
-  min-height: 3.75rem;       /* 60px -> min-height */
-  height: auto;
+  min-height: 3rem;
 }
 
-/* DPI artınca sığmazsa alt satıra geçsin */
-.grid-row {
+.grid-row,
+.lower-row {
   display: flex;
-  gap: 0.75rem;              /* 10px -> rem */
+  gap: 0.5rem;
   flex-wrap: wrap;
   min-width: 0;
 }
 
 .grid-7-col > div {
-  flex: 1 1 10rem;           /* sabit 80px yerine esnek */
-  min-height: 5rem;          /* 80px -> min-height */
+  flex: 1 1 10rem;
+  min-height: 4.5rem;
 }
 
-/* alt satır */
-.lower-row {
-  display: flex;
-  gap: 0.75rem;
-  margin-top: 0.75rem;
-  flex-wrap: wrap;
-  min-width: 0;
-}
-
-/* tablo kutusu: sabit height yok */
-.table-box {
-  flex: 1 1 0;
-  height: auto;              /* 250px kilidi kaldır */
-  min-height: 12rem;         /* taban yükseklik */
-  min-width: 0;
-  min-height: 0;
-}
-
-/* 50vh KİLİDİNİ AÇTIK: zoom’da içerik sığmazsa büyüsün */
 .half {
   display: flex;
   width: 100%;
-  gap: 0.75rem;
-  height: auto;              /* 50vh yerine */
+  gap: 0.5rem;
+  flex-wrap: wrap;
   min-height: 0;
-  flex-wrap: wrap;           /* yan yana sığmazsa alt satıra */
 }
 
-/* kutular */
 .box {
-  flex: 1 1 20rem;           /* sığmazsa kır */
-  margin: 0.75rem;
+  flex: 1 1 20rem;
   border: none;
-  max-height: none;          /* 278px kilidi kaldır */
+  margin: 0.25rem;
   min-width: 0;
   min-height: 0;
 }
 
-/* scroll alanı: kutunun içinde scroll, px kilidi yok */
-.scroll{
-  display:block;
-  overflow: auto;
-  max-height: none;          /* 278px kilidi kaldır */
+.scroll,
+.emir{
+  overflow-y: auto;
+  overflow-x: auto;
+  max-height: clamp(9rem, 26vh, 15rem);
   min-height: 0;
 }
 
-/* =========================
-   DİĞER
-   ========================= */
-.pointer { cursor:pointer; }
+thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #fff;
+}
+
+.pointer {
+  cursor:pointer;
+}
 
 .square-big {
   font-size:300%;
@@ -187,35 +130,25 @@ thead th {
   font-weight:bold;
 }
 
-.box-title {
-  flex: 1;
-  margin-right: 0.75rem;
-  margin-left: 0.75rem;
-  margin-top: 0.75rem;
-}
-
+.box-title,
 .ratio-box {
+  margin: 0.25rem;
   flex: 1;
-  margin: 0.75rem;
 }
 
 .no-hover:hover{
   background-color: #c8e6ec !important;
-  box-shadow: #c8e6ec !important;
   border-color: #c8e6ec !important;
 }
 
-/* =========================
-   STATUS BADGE
-   ========================= */
 .status-badge{
   display:inline-block;
-  padding: 0.25rem 0.625rem; /* 4px 10px -> rem */
+  padding: 0.25rem 0.6rem;
   border-radius: 0.75rem;
   font-size:0.85rem;
   font-weight:600;
   border: 1.5px solid;
-  min-width: 5.6rem;         /* 90px -> rem */
+  min-width: 5.5rem;
   text-align:center;
 }
 
